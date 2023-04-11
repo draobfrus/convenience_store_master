@@ -16,3 +16,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+*.log
+*.sqlite
+.htaccess
+/storage
+/config
