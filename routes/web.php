@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('top');
 });
 
-Route::resource('post', PostController::class);
+Route::resource('post', PostController::class)->middleware('throttle:60, 1');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -44,16 +45,27 @@ class PostController extends Controller
         $post->title=$request->title;
         $post->body=$request->body;
         $post->user_id=auth()->user()->id;
-        if (request('image')){
-          // 画像ファイル名を作成、$nameに代入
-          $original = request()->file('image')->getClientOriginalName();
-          $name = date('Ymd_His').'_'.$original;
-          // $nameの名前で画像ファイルを指定した場所へ保存
-          request()->file('image')->move('storage/images', $name);
-          // $nameの名前で画像ファイル名をデータベースへ保存
-          $post->image = $name;
+        if ($request->file('image')){
+          // // 画像ファイル名を作成、$nameに代入
+          // $original = request()->file('image')->getClientOriginalName();
+          // $name = date('Ymd_His').'_'.$original;
+          // // $nameの名前で画像ファイルを指定した場所へ保存
+          // request()->file('image')->move('storage/images', $name);
+          // // $nameの名前で画像ファイル名をデータベースへ保存
+          // $post->image = $name;
+
+          //s3アップロード開始
+          $image = $request->file('image');
+          // バケットの`image`フォルダへアップロード
+          $path = Storage::disk('s3')->putFile('image', $image);
+          // アップロードした画像のフルパスを取得
+          $post->image = Storage::disk('s3')->url($path);
         }
+
         $post->save();
+
+        // 二重送信対策
+        $request->session()->regenerateToken();
         return redirect()->route('post.create')->with('message', '投稿しました');
     }
 
