@@ -2,28 +2,115 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $values = Post::all();
+        //
+    }
 
-        $count = Post::count(); // 数字
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('post.create');//
+    }
 
-        $first = Post::findOrFail(1); // インスタンス
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $inputs = $request->validate([
+            'title'=>'required|max:255',
+            'body'=>'required|max:1000',
+            'image'=>'image|max:1024'
+        ]);
+        $post=new Post();
+        $post->title=$request->title;
+        $post->body=$request->body;
+        $post->user_id=auth()->user()->id;
+        if ($request->file('image')){
+          // // 画像ファイル名を作成、$nameに代入
+          // $original = request()->file('image')->getClientOriginalName();
+          // $name = date('Ymd_His').'_'.$original;
+          // // $nameの名前で画像ファイルを指定した場所へ保存
+          // request()->file('image')->move('storage/images', $name);
+          // // $nameの名前で画像ファイル名をデータベースへ保存
+          // $post->image = $name;
 
-        $whereBBB = Post::where('text', '=', 'aaa')->get();
+          //s3アップロード開始
+          $image = $request->file('image');
+          // バケットの`image`フォルダへアップロード
+          $path = Storage::disk('s3')->putFile('image', $image);
+          // アップロードした画像のフルパスを取得
+          $post->image = Storage::disk('s3')->url($path);
+        }
 
-        $queryBuilder = DB::table('posts')->where('text', '=', 'aaa')
-        ->select('id', 'text')
-        ->get();
+        $post->save();
 
-        // dd($values, $count, $first, $whereBBB, $queryBuilder);
+        // 二重送信対策
+        $request->session()->regenerateToken();
+        return redirect()->route('post.create')->with('message', '投稿しました');
+    }
 
-        return view('posts.post', compact('values'));
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Post $post)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Post $post)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Post $post)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Post $post)
+    {
+        //
     }
 }

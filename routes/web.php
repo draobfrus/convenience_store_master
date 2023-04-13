@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('top');
 });
 
-Route::get('posts/post', [PostController::class, 'index']); // 配列で書く
+Route::resource('post', PostController::class)->middleware('throttle:60, 1');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
