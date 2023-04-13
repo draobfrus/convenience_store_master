@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('top');
 });
 
-Route::get('posts/post', [PostController::class, 'index']); // 配列で書く
+Route::resource('post', PostController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
