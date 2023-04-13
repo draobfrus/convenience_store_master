@@ -39,7 +39,7 @@
             @endif
             <div class="text-gray-700 body-font">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <img src="/storage/logo2.png" class="w-auto">
+                    <img src="{{ asset('images/logo2.png') }}" class="w-auto">
                 </div>
                 <div class="container mx-auto flex px-5 py-8 md:py-4 md:flex-row flex-col items-center">
                     <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
@@ -48,7 +48,7 @@
                         <p class="mb-8 leading-relaxed">せっかく買うなら、お墨付きを。<br>目指せ、コンビニマスター！</p>
                     </div>
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                        <img src="/storage/top.png" class="w-auto" class="object-cover object-center rounded" alt="hero">
+                        <img src="{{ asset('images/top.png') }}" class="w-auto" class="object-cover object-center rounded" alt="hero">
                     </div>
                 </div>
             </div>
