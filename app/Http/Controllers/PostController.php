@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Pagination\Paginator;
 
 class PostController extends Controller
 {
@@ -13,11 +14,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at','desc')->get();
-        $user=auth()->user();
-        return view('post.index', compact('posts', 'user'));//
+        $user = auth()->user();
+
+        // 検索対応
+        $search = $request->search;
+        $query = Post::search($search);
+        $posts = $query->orderBy('created_at', 'desc')->paginate(12);
+
+        return view('post.index', compact('posts', 'user'));
     }
 
     /**
