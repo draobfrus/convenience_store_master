@@ -15,14 +15,14 @@
     <div class="max-w-7xl mx-auto px-6">
         <!-- コンテンツ -->
         <div class="container py-16 mx-auto">
-            <div class="grid gap-x-6 gap-y-6 sm:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
+            <div class="grid gap-x-2 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             @foreach ($posts as $post)
-                <div class="mb-10 px-6">
-                    <div class="rounded-lg h-64 overflow-hidden">
+                <div class="mb-10 md:mb-20 px-6">
+                    <div class="rounded-lg bg-white group mb-2 block h-48 overflow-hidden">
                         @if($post->image)
                             <img src="{{ $post->image }}" alt="Image">
                         @else
-                            <img alt="content" class="object-cover object-center h-full w-full" src="https://dummyimage.com/1201x501">
+                            <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('images/no_image.jpg') }}">
                         @endif
                     </div>
                     <h2 class="title-font text-2xl font-medium text-gray-900 my-3">{{ $post->title }}</h2>
