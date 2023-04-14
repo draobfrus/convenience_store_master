@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Pagination\Paginator;
 
 class PostController extends Controller
 {
@@ -13,9 +14,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $user = auth()->user();
+
+        // 検索対応
+        $search = $request->search;
+        $query = Post::search($search);
+        $posts = $query->orderBy('created_at', 'desc')->paginate(12);
+
+        return view('post.index', compact('posts', 'user'));
     }
 
     /**
@@ -46,13 +54,6 @@ class PostController extends Controller
         $post->body=$request->body;
         $post->user_id=auth()->user()->id;
         if ($request->file('image')){
-          // // 画像ファイル名を作成、$nameに代入
-          // $original = request()->file('image')->getClientOriginalName();
-          // $name = date('Ymd_His').'_'.$original;
-          // // $nameの名前で画像ファイルを指定した場所へ保存
-          // request()->file('image')->move('storage/images', $name);
-          // // $nameの名前で画像ファイル名をデータベースへ保存
-          // $post->image = $name;
 
           //s3アップロード開始
           $image = $request->file('image');
