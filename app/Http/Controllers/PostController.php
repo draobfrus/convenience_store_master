@@ -15,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('created_at','desc')->get();
+        $user=auth()->user();
+        return view('post.index', compact('posts', 'user'));//
     }
 
     /**
@@ -46,13 +48,6 @@ class PostController extends Controller
         $post->body=$request->body;
         $post->user_id=auth()->user()->id;
         if ($request->file('image')){
-          // // 画像ファイル名を作成、$nameに代入
-          // $original = request()->file('image')->getClientOriginalName();
-          // $name = date('Ymd_His').'_'.$original;
-          // // $nameの名前で画像ファイルを指定した場所へ保存
-          // request()->file('image')->move('storage/images', $name);
-          // // $nameの名前で画像ファイル名をデータベースへ保存
-          // $post->image = $name;
 
           //s3アップロード開始
           $image = $request->file('image');

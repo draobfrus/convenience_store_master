@@ -1,16 +1,15 @@
-<?php phpinfo(); ?>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight pb-2">
             {{ ('投稿作成') }}
         </h2>
+        <!-- メッセージ -->
         <x-validation-errors class="my-2" :messages="$errors->all()"/>
         @if(session('message'))
             <x-message :message="session('message')" />
         @endif
     </x-slot>
     <div class="max-w-7xl mx-auto px-6">
-        <!-- メッセージ -->
         <!-- フォーム -->
         <form method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
         @csrf
