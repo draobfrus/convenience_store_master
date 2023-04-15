@@ -11,8 +11,9 @@
     </x-slot>
     <div class="max-w-7xl mx-auto px-6">
         <!-- フォーム -->
-        <form method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
-        @csrf
+        <form method="post" action="{{route('post.update', $post)}}" enctype="multipart/form-data">
+            @csrf
+            @method('patch')
             <div class="flex flex-col gap-2 p-4 md:p-8">
                 <label for="title" class="font-semibold mt-4">タイトル</label>
                 <input type="text" name="title" class="w-auto py-2 border border-gray-300 placeholder-gray-400 rounded-md" id="title" value="{{ old('title', $post->title )}}" placeholder="必須/255字以下で入力してください">
@@ -32,7 +33,7 @@
             <div class="flex justify-center">
             <!-- 投稿ボタン -->
             <x-primary-button class="mt-12">
-                投稿する
+                更新する
             </x-primary-button>
             </div>
         </form>

@@ -12,7 +12,7 @@
     <div class="max-w-7xl mx-auto px-6">
         <!-- フォーム -->
         <form method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
-        @csrf
+            @csrf
             <div class="flex flex-col gap-2 p-4 md:p-8">
                 <label for="title" class="font-semibold mt-4">タイトル</label>
                 <input type="text" name="title" class="w-auto py-2 border border-gray-300 placeholder-gray-400 rounded-md" id="title" value="{{ old('title' )}}" placeholder="必須/255字以下で入力してください">
