@@ -102,6 +102,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $this->authorize('update', $post);
         $inputs = $request->validate([
             'title'=>'required|max:255',
             'body'=>'required|max:1000',
@@ -127,7 +128,6 @@ class PostController extends Controller
         // 二重送信対策
         $request->session()->regenerateToken();
         return redirect()->route('post.create')->with('message', '更新しました');
-
     }
 
     /**
@@ -138,6 +138,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         $post->delete();
         return redirect()->route('post.index')->with('message', '削除しました');
     }

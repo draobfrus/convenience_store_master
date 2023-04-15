@@ -17,12 +17,16 @@
                             {{ $post->title }}
                             <!-- 編集・削除ボタン -->
                             <div class="flex justify-end mt-4">
+                                @can('update', $post)
                                 <a href="{{route('post.edit', $post)}}"><x-primary-button class="bg-teal-700 float-right mb-2">編集</x-primary-button></a>
+                                @endcan
+                                @can('delete', $post)
                                 <form method="post" action="{{route('post.destroy', $post)}}">
                                     @csrf
                                     @method('delete')
                                     <x-primary-button class="bg-red-700 float-right ml-4" onClick="return confirm('本当に削除しますか？');">削除</x-primary-button>
                                 </form>
+                                @endcan
                             </div>
                         <div>
                             </h1><hr class="w-full">
