@@ -68,7 +68,7 @@ class PostController extends Controller
 
         // 二重送信対策
         $request->session()->regenerateToken();
-        return redirect()->route('post.create')->with('message', '投稿しました');
+        return redirect()->route('post.index')->with('message', '投稿しました');
     }
 
     /**
@@ -109,7 +109,6 @@ class PostController extends Controller
             'image'=>'image|max:1024'
         ]);
 
-        $post=new Post();
         $post->title=$request->title;
         $post->body=$request->body;
         $post->user_id=auth()->user()->id;
@@ -125,9 +124,7 @@ class PostController extends Controller
 
         $post->save();
 
-        // 二重送信対策
-        $request->session()->regenerateToken();
-        return redirect()->route('post.create')->with('message', '更新しました');
+        return redirect()->route('post.index')->with('message', '更新しました');
     }
 
     /**
