@@ -4,6 +4,11 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight pb-2">
             {{ ('投稿一覧') }}
         </h2>
+        <!-- メッセージ -->
+        <x-validation-errors class="my-2" :messages="$errors->all()"/>
+        @if(session('message'))
+            <x-message :message="session('message')" />
+        @endif
         <!-- 検索フォーム -->
         <form method="get" action="{{ route('post.index') }}">
             <input type="text" name="search" placeholder="タイトル検索" class="w-2/3">

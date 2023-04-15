@@ -42,7 +42,8 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        public function store(Request $request){
+        public function store(Request $request)
+        {
             $inputs = $request->validate([
             'title'=>'required|max:255',
             'body'=>'required|max:1000',
@@ -76,8 +77,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post){
-        return view('post.show', compact('post'));//
+    public function show(Post $post)
+    {
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -86,8 +88,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post){
-        return view('post.edit', compact('post'));//
+    public function edit(Post $post)
+    {
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -97,8 +100,8 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post){
-
+    public function update(Request $request, Post $post)
+    {
         $inputs = $request->validate([
             'title'=>'required|max:255',
             'body'=>'required|max:1000',
@@ -135,6 +138,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('post.index')->with('message', '削除しました');
     }
 }
