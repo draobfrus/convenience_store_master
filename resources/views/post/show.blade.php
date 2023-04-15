@@ -14,8 +14,9 @@
 
                 <div class="bg-white w-full md:w-2/3 mx-auto rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
                     <div class="mt-4">
-                        <h1 class="text-lg text-gray-700 font-semibold">
+                        <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">
                             {{ $post->title }}
+                            <a href="{{route('post.edit', $post)}}"><x-primary-button class="bg-teal-700 float-right mb-2">編集</x-primary-button></a>
                         </h1><hr class="w-full">
                         <p class="mt-4 text-gray-600 py-4">{{$post->body}}</p>
                         <div class="rounded-lg bg-white group mb-2 block overflow-hidden">
