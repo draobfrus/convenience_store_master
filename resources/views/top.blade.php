@@ -27,7 +27,7 @@
             @if (Route::has('login'))
                 <div class="fixed top-1 right-1 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/post') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ 'ホーム' }}</a>
+                        <a href="{{ url('/post') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ '投稿一覧' }}</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ 'ログイン' }}</a>
                         @if (Route::has('register'))
