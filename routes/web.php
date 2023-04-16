@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('post', PostController::class)->middleware('throttle:60, 1');
     Route::post('/post/{post}/bookmark', [BookmarkController::class, 'store'])->name('bookmark.store');
     Route::delete('/post/{post}/unbookmark', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');
+    Route::get('/bookmarks', [PostController::class, 'bookmark_posts'])->name('bookmarks');
 });
 
 require __DIR__.'/auth.php';

@@ -139,4 +139,12 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('post.index')->with('message', '削除しました');
     }
+
+    public function bookmark_posts()
+    {
+        // ログインユーザーがブックマークした投稿を$postsに代入
+        $posts = \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->paginate(12);
+        return view('post.bookmarks', compact('posts'));
+    }
+
 }
