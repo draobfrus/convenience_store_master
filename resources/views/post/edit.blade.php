@@ -11,7 +11,7 @@
     </x-slot>
     <div class="max-w-7xl mx-auto px-6">
         <!-- フォーム -->
-        <form method="post" action="{{route('post.update', $post)}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('post.update', $post)}}" enctype="multipart/form-data" class="w-full md:w-2/3 mx-auto">
             @csrf
             @method('patch')
             <div class="flex flex-col gap-2 p-4 md:p-8">
