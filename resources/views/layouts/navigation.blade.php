@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
                         {{ __('投稿作成') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('myposts')" :active="request()->routeIs('myposts')">
+                        {{ __('自分の投稿') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('bookmarks')" :active="request()->routeIs('bookmarks')">
                         {{ __('ブックマークした投稿') }}
                     </x-nav-link>
@@ -78,6 +81,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
                 {{ __('投稿作成') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('myposts')" :active="request()->routeIs('myposts')">
+                {{ __('自分の投稿') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('bookmarks')" :active="request()->routeIs('bookmarks')">
                 {{ __('ブックマークした投稿') }}

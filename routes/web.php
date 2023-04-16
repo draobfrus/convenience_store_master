@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/post/{post}/bookmark', [BookmarkController::class, 'store'])->name('bookmark.store');
     Route::delete('/post/{post}/unbookmark', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');
     Route::get('/bookmarks', [PostController::class, 'bookmark_posts'])->name('bookmarks');
+    Route::get('/myposts', [PostController::class, 'my_posts'])->name('myposts');
 });
 
 require __DIR__.'/auth.php';

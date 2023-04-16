@@ -147,4 +147,10 @@ class PostController extends Controller
         return view('post.bookmarks', compact('posts'));
     }
 
+    public function my_posts()
+    {
+        // ログインユーザーが作成した投稿を$postsに代入
+        $posts = \Auth::user()->posts()->orderBy('created_at', 'desc')->paginate(12);
+        return view('post.myposts', compact('posts'));
+    }
 }
