@@ -27,11 +27,11 @@
             @if (Route::has('login'))
                 <div class="fixed top-1 right-1 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/post') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        <a href="{{ url('/post') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ 'ホーム' }}</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">{{ 'ログイン' }}</a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{ 'ユーザー登録' }}</a>
                         @endif
                     @endauth
                 </div>
@@ -42,9 +42,9 @@
                 </div>
                 <div class="container mx-auto flex px-5 py-8 md:py-4 md:flex-row flex-col items-center">
                     <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">たまにしか行かないコンビニで、<br>失敗しないために。
+                        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">せっかく買うなら、お墨付きを。
                         </h1>
-                        <p class="mb-8 leading-relaxed">せっかく買うなら、お墨付きを。<br>目指せ、コンビニマスター！</p>
+                        <p class="mb-8 leading-relaxed">コンビニマスターは、<span class="font-bold text-pink-500">自炊派のため</span>のコンビニ商品投稿サービス。<br>本当におすすめのコンビニ商品を投稿しあって、後悔のない買い物をしよう。</p>
                     </div>
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
                         <img src="{{ asset('images/top.png') }}" class="w-auto" class="object-cover object-center rounded" alt="hero">

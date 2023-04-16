@@ -29,4 +29,8 @@ class Post extends Model
         }
         return $query;
     }
+
+    public function bookmarks() {
+        return $this->hasMany(Bookmark::class);
+    }
 }

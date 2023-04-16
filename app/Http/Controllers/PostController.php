@@ -16,14 +16,12 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $user = auth()->user();
-
         // 検索対応
         $search = $request->search;
         $query = Post::search($search);
         $posts = $query->orderBy('created_at', 'desc')->paginate(12);
 
-        return view('post.index', compact('posts', 'user'));
+        return view('post.index', compact('posts'));
     }
 
     /**
@@ -138,5 +136,19 @@ class PostController extends Controller
         $this->authorize('delete', $post);
         $post->delete();
         return redirect()->route('post.index')->with('message', '削除しました');
+    }
+
+    public function bookmark_posts()
+    {
+        // ログインユーザーがブックマークした投稿を$postsに代入
+        $posts = \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->paginate(12);
+        return view('post.bookmarks', compact('posts'));
+    }
+
+    public function my_posts()
+    {
+        // ログインユーザーが作成した投稿を$postsに代入
+        $posts = \Auth::user()->posts()->orderBy('created_at', 'desc')->paginate(12);
+        return view('post.myposts', compact('posts'));
     }
 }
