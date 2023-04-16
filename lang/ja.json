@@ -1,3 +1,14 @@
 {
-  "Whoops! Something went wrong.":"問題が発生しました。"
+  "Profile":"プロフィール",
+  "Name":"名前",
+  "Email":"メールアドレス",
+  "Password":"パスワード",
+  "Confirm Password":"パスワード確認",
+  "Home": "ホーム",
+  "Remember me": "ユーザー情報を保存する",
+  "Register": "ユーザー登録",
+  "Already registered?": "登録済みの方はこちら",
+  "Log in": "ログイン",
+  "Log Out":"ログアウト",
+  "Forgot your password?": "パスワードを忘れた方はこちら"
 }
