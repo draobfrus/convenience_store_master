@@ -32,7 +32,7 @@
                 @endif
             <div class="flex justify-center">
             <!-- 投稿ボタン -->
-            <x-primary-button class="mt-12 bg-cyan-400 hover:bg-cyan-500 focus:bg-cyan-500 active:bg-cyan-600">
+            <x-primary-button class="mt-12 bg-teal-500 hover:bg-teal-600 focus:bg-teal-600 active:bg-teal-600">
                 更新する
             </x-primary-button>
             </div>

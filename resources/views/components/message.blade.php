@@ -1,5 +1,5 @@
 @if(isset($message))
-<div class="border px-4 py-3 rounded relative bg-cyan-100 border-cyan-400 text-cyan-700">
+<div class="border px-4 py-3 rounded relative bg-teal-100 border-teal-400 text-teal-700">
     {{$message}}
 </div>
 @endif
