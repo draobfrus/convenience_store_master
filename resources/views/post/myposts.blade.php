@@ -12,9 +12,9 @@
                 <div class="mb-10 md:mb-20 px-6">
                     <div class="rounded-lg bg-white group mb-2 block h-48 overflow-hidden">
                         @if($post->image)
-                            <img src="{{ $post->image }}" alt="Image">
+                            <img src="{{ $post->image }}" alt="Image" class="object-cover object-center h-full w-full">
                         @else
-                            <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('images/no_image.jpg') }}">
+                            <img alt="noImage" class="object-cover object-center h-full w-full" src="{{ asset('images/no_image.jpg') }}">
                         @endif
                     </div>
                     <h2 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer pt-4">
