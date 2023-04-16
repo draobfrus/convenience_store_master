@@ -11,7 +11,7 @@ class BookmarkController extends Controller
         if (!$user->is_bookmark($postId)) {
             $user->bookmark_posts()->attach($postId);
         }
-        return back();
+        return back()->with('message', 'ブックマークしました');
     }//
 
     public function destroy($postId) {
@@ -19,6 +19,6 @@ class BookmarkController extends Controller
         if ($user->is_bookmark($postId)) {
             $user->bookmark_posts()->detach($postId);
         }
-        return back();
+        return back()->with('message', 'ブックマーク解除しました');
     }//
 }

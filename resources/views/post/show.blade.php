@@ -46,7 +46,7 @@
                                 @if (!Auth::user()->is_bookmark($post->id))
                                 <form action="{{ route('bookmark.store', $post) }}" method="post">
                                     @csrf
-                                    <x-primary-button>ブックマーク登録</x-primary-button>
+                                    <x-primary-button>ブックマーク</x-primary-button>
                                 </form>
                                 @else
                                 <form action="{{ route('bookmark.destroy', $post) }}" method="post">
