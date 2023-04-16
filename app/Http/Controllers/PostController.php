@@ -16,14 +16,12 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $user = auth()->user();
-
         // 検索対応
         $search = $request->search;
         $query = Post::search($search);
         $posts = $query->orderBy('created_at', 'desc')->paginate(12);
 
-        return view('post.index', compact('posts', 'user'));
+        return view('post.index', compact('posts'));
     }
 
     /**

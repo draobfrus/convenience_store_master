@@ -1,7 +1,11 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    <!-- メッセージ -->
+    <x-validation-errors class="my-2" :messages="$errors->all()"/>
+    @if(session('message'))
+        <x-message :message="session('message')" />
+    @endif
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
