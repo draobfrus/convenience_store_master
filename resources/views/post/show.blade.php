@@ -38,8 +38,23 @@
                                     <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('images/no_image.jpg') }}">
                                 @endif
                             </div>
-                            <div class="text-sm font-semibold flex flex-row-reverse">
+                            <div class="text-sm font-semibold flex flex-row">
                                 <p>by {{ $post->user->name }} • {{$post->created_at->format('Y/m/d')}}</p>
+                            </div>
+                            <!-- ブックマークボタン -->
+                            <div class="flex justify-end">
+                                @if (!Auth::user()->is_bookmark($post->id))
+                                <form action="{{ route('bookmark.store', $post) }}" method="post">
+                                    @csrf
+                                    <x-primary-button>ブックマーク登録</x-primary-button>
+                                </form>
+                                @else
+                                <form action="{{ route('bookmark.destroy', $post) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <x-primary-button>ブックマーク解除</x-primary-button>
+                                </form>
+                                @endif
                             </div>
                         </div>
                     </div>
