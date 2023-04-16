@@ -4,6 +4,11 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight pb-2">
             {{ ('投稿一覧') }}
         </h2>
+        <!-- メッセージ -->
+        <x-validation-errors class="my-2" :messages="$errors->all()"/>
+        @if(session('message'))
+            <x-message :message="session('message')" />
+        @endif
         <!-- 検索フォーム -->
         <form method="get" action="{{ route('post.index') }}">
             <input type="text" name="search" placeholder="タイトル検索" class="w-2/3">
@@ -25,7 +30,9 @@
                             <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('images/no_image.jpg') }}">
                         @endif
                     </div>
-                    <h2 class="title-font text-2xl font-medium text-gray-900 my-3">{{ $post->title }}</h2>
+                    <h2 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer pt-4">
+                        <a href="{{route('post.show', $post)}}">{{ $post->title }}</a>
+                    </h2>
                     <p class="leading-relaxed text-base">{{ $post->user->name }}</p>
                     <p class="leading-relaxed text-base">{{$post->created_at->diffForHumans()}}</p>
                 </div>

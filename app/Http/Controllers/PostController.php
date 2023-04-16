@@ -42,32 +42,33 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $inputs = $request->validate([
+        public function store(Request $request)
+        {
+            $inputs = $request->validate([
             'title'=>'required|max:255',
             'body'=>'required|max:1000',
             'image'=>'image|max:1024'
         ]);
+
         $post=new Post();
         $post->title=$request->title;
         $post->body=$request->body;
         $post->user_id=auth()->user()->id;
-        if ($request->file('image')){
 
-          //s3アップロード開始
-          $image = $request->file('image');
-          // バケットの`image`フォルダへアップロード
-          $path = Storage::disk('s3')->putFile('image', $image);
-          // アップロードした画像のフルパスを取得
-          $post->image = Storage::disk('s3')->url($path);
+        if ($request->file('image')){
+            //s3アップロード開始
+            $image = $request->file('image');
+            // バケットの`image`フォルダへアップロード
+            $path = Storage::disk('s3')->putFile('image', $image);
+            // アップロードした画像のフルパスを取得
+            $post->image = Storage::disk('s3')->url($path);
         }
 
         $post->save();
 
         // 二重送信対策
         $request->session()->regenerateToken();
-        return redirect()->route('post.create')->with('message', '投稿しました');
+        return redirect()->route('post.index')->with('message', '投稿しました');
     }
 
     /**
@@ -78,7 +79,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -89,7 +90,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -101,7 +102,29 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $this->authorize('update', $post);
+        $inputs = $request->validate([
+            'title'=>'required|max:255',
+            'body'=>'required|max:1000',
+            'image'=>'image|max:1024'
+        ]);
+
+        $post->title=$request->title;
+        $post->body=$request->body;
+        $post->user_id=auth()->user()->id;
+
+        if ($request->file('image')){
+            //s3アップロード開始
+            $image = $request->file('image');
+            // バケットの`image`フォルダへアップロード
+            $path = Storage::disk('s3')->putFile('image', $image);
+            // アップロードした画像のフルパスを取得
+            $post->image = Storage::disk('s3')->url($path);
+        }
+
+        $post->save();
+
+        return redirect()->route('post.index')->with('message', '更新しました');
     }
 
     /**
@@ -112,6 +135,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $this->authorize('delete', $post);
+        $post->delete();
+        return redirect()->route('post.index')->with('message', '削除しました');
     }
 }
