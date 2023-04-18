@@ -123,7 +123,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->route('post.index')->with('message', '更新しました');
+        return redirect()->route('post.show', compact('post'))->with('message', '更新しました');
     }
 
     /**
