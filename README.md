@@ -1,7 +1,4 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/draobfrus/laravel_post_app/add_images/readme_logo.png
-" width="400"></a>
-</p>
+![readme_logo](https://raw.githubusercontent.com/draobfrus/laravel_post_app/add_images/readme_logo.png)
 
 <p align="center">
   <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
