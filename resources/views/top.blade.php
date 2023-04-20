@@ -19,7 +19,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
-        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/message.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
         <div class="antialiased">

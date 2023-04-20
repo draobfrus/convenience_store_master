@@ -1,4 +1,5 @@
 import './bootstrap';
+import './message';
 
 import Alpine from 'alpinejs';
 
