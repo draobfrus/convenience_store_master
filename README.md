@@ -1,17 +1,19 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/draobfrus/laravel_post_app/add_images/readme_logo.png
-" width="400" alt="Laravel Logo"></a></p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/draobfrus/laravel_post_app/add_images/readme_logo.png
+" width="400"></a>
+</p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-<img src="https://img.shields.io/badge/php-v8.2.4-blueviolet">
-<img src="https://img.shields.io/badge/laravel-v9.52.5-ff69b4">
+  <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+  <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+  <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+  <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://img.shields.io/badge/php-v8.2.4-blueviolet">
+  <img src="https://img.shields.io/badge/laravel-v9.52.5-ff69b4">
 </p>
 
 <h2 align="center">
-<a href="http://convenience-store-master.com">http://convenience-store-master.com</a>
+  <a href="http://convenience-store-master.com">http://convenience-store-master.com</a>
 </h2>
 <br>
 <br />
