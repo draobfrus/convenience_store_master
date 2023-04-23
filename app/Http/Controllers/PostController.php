@@ -54,6 +54,7 @@ class PostController extends Controller
         $post->title=$request->title;
         $post->body=$request->body;
         $post->user_id=auth()->user()->id;
+        $post->store_id=$request->store_id;
 
         if ($request->file('image')){
             //s3アップロード開始
@@ -114,6 +115,7 @@ class PostController extends Controller
         $post->title=$request->title;
         $post->body=$request->body;
         $post->user_id=auth()->user()->id;
+        $post->store_id=$request->store_id;
 
         if ($request->file('image')){
             //s3アップロード開始
