@@ -9,12 +9,11 @@ function bookmark(postId) {
         _method: "POST"
     },
   })
-    .done(function (data, status, xhr) {
-      console.log(data);
+    .done(function () {
       location.reload();
     })
-    .fail(function (xhr, status, error) {
-      console.log();
+    .fail(function (error) {
+      console.log(error);
     });
 }
 
@@ -29,11 +28,10 @@ function unbookmark(postId) {
         _method: "DELETE"
     },
   })
-    .done(function (data, status, xhr) {
-      console.log(data);
+    .done(function () {
       location.reload();
     })
-    .fail(function (xhr, status, error) {
-      console.log();
+    .fail(function (error) {
+      console.log(error);
     });
 }
