@@ -12,4 +12,9 @@ class MstStore extends Model
     protected $fillable = [
         'storename',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(post::class, 'store_id', 'id');
+    }
 }
