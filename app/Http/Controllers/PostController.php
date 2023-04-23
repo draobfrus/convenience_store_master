@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\MstStore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Pagination\Paginator;
@@ -31,7 +32,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');//
+        $stores = MstStore::all();
+        return view('post.create', compact('stores'));
     }
 
     /**
@@ -52,6 +54,7 @@ class PostController extends Controller
         $post->title=$request->title;
         $post->body=$request->body;
         $post->user_id=auth()->user()->id;
+        $post->store_id=$request->store_id;
 
         if ($request->file('image')){
             //s3アップロード開始
@@ -89,7 +92,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $this->authorize('view', $post);
-        return view('post.edit', compact('post'));
+        $stores = MstStore::all();
+        return view('post.edit', compact('post', 'stores'));
     }
 
     /**
@@ -111,6 +115,7 @@ class PostController extends Controller
         $post->title=$request->title;
         $post->body=$request->body;
         $post->user_id=auth()->user()->id;
+        $post->store_id=$request->store_id;
 
         if ($request->file('image')){
             //s3アップロード開始

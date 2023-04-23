@@ -15,6 +15,10 @@ class Post extends Model
         'image',
     ];
 
+    public function store() {
+        return $this->belongsTo(MstStore::class);
+    }
+
     public function user() {
         return $this->belongsTo(User::class);
     }

@@ -5,9 +5,6 @@ function bookmark(postId) {
     },
     url: `/post/${postId}/bookmark`,
     type: "POST",
-    data: {
-        _method: "POST"
-    },
   })
     .done(function () {
       location.reload();
