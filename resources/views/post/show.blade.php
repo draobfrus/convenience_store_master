@@ -44,16 +44,9 @@
                             <!-- ブックマークボタン -->
                             <div class="flex justify-end">
                                 @if (!Auth::user()->is_bookmark($post->id))
-                                <form action="{{ route('bookmark.store', $post) }}" method="post">
-                                    @csrf
-                                    <x-primary-button class="bg-orange-400 hover:bg-orange-500 focus:bg-orange-500 active:bg-orange-500">ブックマーク</x-primary-button>
-                                </form>
+                                    <x-primary-button onclick="bookmark({{$post->id}})">ブックマーク登録</x-primary-button>
                                 @else
-                                <form action="{{ route('bookmark.destroy', $post) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <x-primary-button class="bg-orange-400 hover:bg-orange-500 focus:bg-orange-500 active:bg-orange-500">ブックマーク解除</x-primary-button>
-                                </form>
+                                    <x-primary-button onclick="unbookmark({{$post->id}})" class="bg-orange-400 hover:bg-orange-500 focus:bg-orange-500 active:bg-orange-500">ブックマーク解除</x-primary-button>
                                 @endif
                             </div>
                         </div>
