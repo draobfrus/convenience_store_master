@@ -54,6 +54,21 @@
 
 <br />
 
+## テーブル設計
+
+<br>
+
+-   users（登録ユーザー情報）
+-   posts（投稿内容）
+-   mst_stores（代表的なコンビニ店舗名を格納）
+-   bookmarks（ブックマーク）
+
+<br>
+
+<a href="https://gyazo.com/acef91891daab8ef532005dedd75177b"><img src="https://i.gyazo.com/acef91891daab8ef532005dedd75177b.png" alt="Image from Gyazo" width="903"/></a>
+<br>
+<br />
+
 ## ライセンス
 
 本コードは [MIT ライセンス](https://opensource.org/licenses/MIT)に準拠しています。
