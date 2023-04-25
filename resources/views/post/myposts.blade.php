@@ -20,6 +20,9 @@
                     <h2 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer pt-4">
                         <a href="{{route('post.show', $post)}}">{{ $post->title }}</a>
                     </h2>
+                    @if($post->store)
+                        <span class="font-bold bg-cyan-600 text-white text-sm mr-2 px-3 py-1 rounded-full">{{ $post->store->storename }}</span>
+                    @endif
                     <p class="leading-relaxed text-base">{{ $post->user->name }}</p>
                     <p class="leading-relaxed text-base">{{$post->created_at->diffForHumans()}}</p>
                 </div>
