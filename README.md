@@ -8,11 +8,6 @@
   <img src="https://img.shields.io/badge/php-v8.2.4-blueviolet">
   <img src="https://img.shields.io/badge/laravel-v9.52.5-ff69b4">
 </p>
-
-<h2 align="center">
-  <a href="http://convenience-store-master.com">http://convenience-store-master.com</a>
-</h2>
-<br>
 <br />
 
 ## サービス概要
